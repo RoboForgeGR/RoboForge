@@ -8,7 +8,7 @@
 <script>document.documentElement.classList.add("js");</script>
 <style>
   :root {
-    --bg: #b4f3f4;
+    --bg: #b4f3f4; --band-b: #9ce9ef; --footer-bg: #0b1c1e;
     --g1: #4cc9ec;
     --g2: #74ede6;
     --ink: #000000;
@@ -26,14 +26,14 @@
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #071a1d; --g1: #0b2a33; --g2: #0f3f49;
+      --bg: #071a1d; --band-b: #0d2a30; --footer-bg: #4cd2d8; --g1: #0b2a33; --g2: #0f3f49;
       --ink: #5ce2e6; --ink-soft: #7fd9de;
       --panel-bg: #5ce2e6; --panel-ink: #000000;
       --line: #5ce2e6; --err: #ff9d8a; --ok: #8fd8ff;
     }
   }
   :root[data-theme="dark"] {
-    --bg: #071a1d; --g1: #0b2a33; --g2: #0f3f49;
+    --bg: #071a1d; --band-b: #0d2a30; --footer-bg: #4cd2d8; --g1: #0b2a33; --g2: #0f3f49;
     --ink: #5ce2e6; --ink-soft: #7fd9de;
     --panel-bg: #5ce2e6; --panel-ink: #000000;
     --line: #5ce2e6; --err: #ff9d8a; --ok: #8fd8ff;
@@ -129,6 +129,7 @@
   .roster { list-style: none; padding: 0; margin: 0; border-top: 3px solid var(--line); }
   .roster li { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 1rem 0; border-bottom: 3px solid var(--line); }
   .roster .name { font-weight: 700; }
+  .roster li.soon { border-bottom: 0; }
   .roster li.soon .name { font-weight: 600; font-style: italic; color: var(--ink-soft); }
   .roster .role { color: var(--ink-soft); }
 
@@ -222,6 +223,9 @@
   .activity .date { font-family: var(--display); font-weight: 900; font-size: 1.1rem; margin: 0 0 .25rem; }
   .activity h3 { margin: 0 0 1rem; }
 
+  /* Section bands */
+  .band-b { background: var(--band-b); }
+
   /* Sponsors */
   .nav ul a.nav-btn { border: 3px solid var(--line); border-radius: 4px; padding: .35rem 1rem; }
   .sponsor-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.25rem; }
@@ -251,7 +255,7 @@
   .consent .btns { display: flex; gap: .75rem; flex-wrap: wrap; }
   .toast { width: max-content; position: fixed; left: 50%; transform: translateX(-50%); top: calc(env(safe-area-inset-top, 0px) + 5rem); z-index: 90; max-width: min(92vw, 34rem); background: var(--panel-bg); color: var(--panel-ink); border: 3px solid var(--panel-ink); border-radius: 4px; padding: .8rem 1.2rem; font-weight: 600; }
 
-  footer { background: var(--panel-bg); color: var(--panel-ink); padding: 2.5rem clamp(1rem, 4vw, 3rem); }
+  footer { background: var(--footer-bg); color: var(--panel-ink); padding: 2.5rem clamp(1rem, 4vw, 3rem); }
   footer .wrap { display: grid; gap: 1.25rem; }
   footer p { margin: 0; max-width: none; font-size: .95rem; }
   footer ul { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin: 0; padding: 0; }
@@ -377,7 +381,7 @@
       </div>
     </section>
 
-    <section id="activities" tabindex="-1">
+    <section id="activities" class="band-b" tabindex="-1">
       <div class="wrap">
         <h2>Activities</h2>
         <article class="activity">
@@ -404,7 +408,7 @@
       </div>
     </section>
 
-    <section id="team" tabindex="-1" style="padding-top:0">
+    <section id="team" class="band-b" tabindex="-1">
       <div class="wrap">
         <h2>The team</h2>
         <ul class="roster">
@@ -416,7 +420,7 @@
       </div>
     </section>
 
-    <section id="sponsors" tabindex="-1" style="padding-top:0">
+    <section id="sponsors" tabindex="-1">
       <div class="wrap">
         <h2>Our sponsors</h2>
         <p>Businesses that support RoboForge appear here.</p>
